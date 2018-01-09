@@ -33,38 +33,23 @@ output reg [3:0]SF_D;
 output reg busy;
 
 //===============================================================================================
-//------------------------------Define the BASIC Command Set-------------------------------------
-//===============================================================================================
-parameter CLEAR_DISPLAY 				= ;
-parameter RETURN_CURSOR_HOME			= ;
-parameter ENTRY_MODE_SET 				= ;
-parameter DISPLAY_ON_OFF 				= ;
-parameter CURSOR_AND_DISPLAY_SHIFT 		= ;
-parameter FUNCTION_SET 					= ;
-parameter SET_CGRAM_ADDRESS 			= ;
-parameter SET_DDRAM_ADDRESS 			= ;
-parameter READY_BUSY_FLAG_ADDRESS 		= ;
-parameter WRITE_DATA_TO_CGRAM_DDRAM 	= ;
-parameter READ_DATA_FROM_CGRAM_DDRAM 	= ;
-
-//===============================================================================================
 //-------------------------------------Define the States-----------------------------------------
 //===============================================================================================
-parameter IDLE			= 3'd0;
-parameter SETUP_HIGH	= 3'd1;
-parameter ACTIVE_HIGH	= 3'd2;
-parameter HOLD_HIGH		= 3'd3;
-parameter WAIT			= 3'd4;
-parameter SETUP_LOW 	= 3'd5;
-parameter ACTIVE_LOW	= 3'd6;
-parameter HOLD_LOW 		= 3'd7;
-parameter DONE 			= 3'd8;
+parameter IDLE			= 4'd0;
+parameter SETUP_HIGH	= 4'd1;
+parameter ACTIVE_HIGH	= 4'd2;
+parameter HOLD_HIGH		= 4'd3;
+parameter WAIT			= 4'd4;
+parameter SETUP_LOW 	= 4'd5;
+parameter ACTIVE_LOW	= 4'd6;
+parameter HOLD_LOW 		= 4'd7;
+parameter DONE 			= 4'd8;
 
 //===============================================================================================
 //-------------------------------------Instruction FSM-------------------------------------------
 //===============================================================================================
-wire [2:0]state;
-reg [2:0]next_state;
+wire [3:0]state;
+reg [3:0]next_state;
 reg [11:0]clk_cnt;
 
 assign state = next_state;
