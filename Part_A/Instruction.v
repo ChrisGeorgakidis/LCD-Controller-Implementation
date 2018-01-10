@@ -1,4 +1,4 @@
-module Instruction (clk, reset, next_instruction, LCD_RS, LCD_RW, LCD_E, SF_D, done)
+module Instruction (clk, reset, next_instruction, db, LCD_RS, LCD_RW, LCD_E, SF_D, done);
 input wire clk, reset;
 input wire next_instruction;
 input wire [9:0]db;
