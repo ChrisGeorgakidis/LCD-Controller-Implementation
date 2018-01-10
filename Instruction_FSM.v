@@ -1,27 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 	University of Thessaly
-// Engineer: 	Georgakidis Christos, Stamoulis John
-//
-// Create Date:    18:00:00 12/10/2017
-// Design Name:
-// Module Name:    Instruction_FSM
-// Project Name:   LCD Controller Implementation
-// Target Devices: Spartan 3E
-// Tool versions:
-// Description:
-//
-// Dependencies: 	The clock should be set to 50MHz.
-//
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments: This module performs the full initialization procedure.
-//								Once init is done, the module takes in DATA and processes
-//								it according to OPER. When idle, the module indicates RDY.
-//								ENB, indicates that DATA and OPER are valid and the module
-//								should start to read the lines.
-//								Note: the calling module must keep DATA valid until RDY re-asserts
-//
-//////////////////////////////////////////////////////////////////////////////////
 module Instruction_FSM (clk, reset, next_instruction, clk_cnt, db, LCD_RS, SF_D, LCD_RW, LCD_E, done);
 input wire clk, reset;
 input wire next_instruction;
