@@ -27,7 +27,7 @@ wire [3:0]SF_D;
     db <= 10'b00_1010_0101;
     #20 next_instruction <= 1'b0;
 
-    #5000000 next_instruction <= 1'b1  //συνολικά 2080*20ns κανει
+    #5000000 next_instruction <= 1'b1;  //συνολικά 2080*20ns κανει
     db <= 10'b00_1111_0000;
     #20 next_instruction <= 1'b0;
   end
