@@ -1,4 +1,4 @@
-module init_fsm (clk, reset, enable, SF_D, LCD_E)
+module Init_FSM (clk, reset, enable, SF_D, LCD_E)
 
 input wire clk, reset;
 input wire [19:0]clk_cnt;
