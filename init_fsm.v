@@ -8,8 +8,7 @@ output reg [7:0]db;
 reg [3:0]next_state;
 wire [3:0]state;
 
-//---------------------------------------------------------//
-//---------------------------------------------------------//
+
 parameter OFF    = 4'd0;
 parameter STATE1 = 4'd1;
 parameter STATE2 = 4'd2;
@@ -21,8 +20,7 @@ parameter STATE7 = 4'd7;
 parameter STATE8 = 4'd8;
 parameter STATE9 = 4'd9;
 parameter DONE   = 4'd10;
-//---------------------------------------------------------//
-//---------------------------------------------------------//
+
 
 assign state = next_state;
 
