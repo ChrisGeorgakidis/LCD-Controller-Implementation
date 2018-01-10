@@ -141,7 +141,7 @@ always @ (posedge clk or posedge reset) begin
   end
 end
 
-//This FSM, depending on the current state, sets the appropriate values int the output signals
+//This FSM, depending on the current state, sets the appropriate values to the output signals
 always @ (posedge clk or posedge reset) begin
   if (reset == 1'b1) begin
     busy    <= 1'b0;
