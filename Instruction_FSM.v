@@ -22,11 +22,11 @@
 //								Note: the calling module must keep DATA valid until RDY re-asserts
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Instruction_FSM (clk, reset, next_instruction, clk_cnt, LCD_RS, SF_D, LCD_RW, LCD_E, done);
+module Instruction_FSM (clk, reset, next_instruction, clk_cnt, db, LCD_RS, SF_D, LCD_RW, LCD_E, done);
 input wire clk, reset;
 input wire next_instruction;
 input wire [11:0]clk_cnt;
-input reg [9:0]db;
+input wire [9:0]db;
 	//The [9:8]db refers to LCD_RS and LCD_RW foor each instruction & the [7:0]db refers to DBs
 output reg LCD_RS, LCD_RW, LCD_E;
 output reg [3:0]SF_D;
@@ -50,7 +50,6 @@ parameter DONE 			= 4'd8;
 //===============================================================================================
 wire [3:0]state;
 reg [3:0]next_state;
-reg [11:0]clk_cnt;
 
 assign state = next_state;
 
@@ -218,7 +217,7 @@ always @ (posedge clk or posedge reset) begin
 	DONE: begin
 		//signals for DONE
         if (clk_cnt == 12'd2080) begin
-            done    <= 1'b1;;
+            done    <= 1'b1;
 	  	end
         else begin
             done <= 1'b0;

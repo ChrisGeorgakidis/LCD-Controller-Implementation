@@ -38,7 +38,6 @@ parameter WAIT_1SEC                     = 4'd10;
 
 wire [3:0]state;
 reg [3:0]next_state;
-reg next_instruction;
 reg [4:0]counter;
 reg [25:0]clk_cnt;
 
@@ -50,7 +49,7 @@ always @ (posedge clk or posedge reset) begin
         next_state <= IDLE;
     end
     else begin
-        case (state) begin
+        case (state)
             IDLE: begin
                 if (enable == 1'b1) begin
                     next_state <= FUNCTION_SET;
@@ -124,7 +123,7 @@ always @ (posedge clk or posedge reset) begin
             WAIT_1_64MS: begin
                 if (cnt_1_64ms == 17'd82000) begin
                     next_state <= SET_DDRAM_ADDRESS_1;
-                    next_instruction <= 1'b1
+                    next_instruction <= 1'b1;
                     enable_w1s <= 1'b0;
                     enable_w1_64ms <= 1'b0;
                 end
@@ -227,7 +226,7 @@ always @ (posedge clk or posedge reset) begin
                 enable_w1s <= 1'b0;
                 enable_w1_64ms <= 1'b0;
             end
-        end
+        endcase
     end
 end
 

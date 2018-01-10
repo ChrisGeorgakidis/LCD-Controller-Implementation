@@ -6,7 +6,8 @@ reg [25:0]next_clk_cnt;
 
 assign clk_cnt = next_clk_cnt;
 
-always @ (posedge clk or posedge reset) begin
+always @ (posedge clk or posedge reset)
+begin
 	if (reset == 1'b1) begin
 		next_clk_cnt <= 26'b0;
 	end
@@ -17,8 +18,9 @@ always @ (posedge clk or posedge reset) begin
 		  		next_clk_cnt <= 26'd0;
 			end
 		end
-		else
+		else begin
 			next_clk_cnt <= 26'd0;
 		end
 	end
+end
 endmodule
