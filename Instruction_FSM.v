@@ -22,7 +22,7 @@
 //								Note: the calling module must keep DATA valid until RDY re-asserts
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Instruction_FSM (clk, reset, next_instruction, clk_cnt, LCD_RS, SF_D, LCD_RW, LCD_E, busy);
+module Instruction_FSM (clk, reset, next_instruction, clk_cnt, LCD_RS, SF_D, LCD_RW, LCD_E, done);
 input wire clk, reset;
 input wire next_instruction;
 input wire [11:0]clk_cnt;
@@ -30,7 +30,7 @@ input reg [9:0]db;
 	//The [9:8]db refers to LCD_RS and LCD_RW foor each instruction & the [7:0]db refers to DBs
 output reg LCD_RS, LCD_RW, LCD_E;
 output reg [3:0]SF_D;
-output reg busy;
+output reg done;
 
 //===============================================================================================
 //-------------------------------------Define the States-----------------------------------------
@@ -144,7 +144,7 @@ end
 //This FSM, depending on the current state, sets the appropriate values to the output signals
 always @ (posedge clk or posedge reset) begin
   if (reset == 1'b1) begin
-    busy    <= 1'b0;
+    done    <= 1'b0;
 	LCD_E 	<= 1'b0;
 	LCD_RS 	<= 1'b0;
 	LCD_RW 	<= 1'b0;
@@ -154,7 +154,7 @@ always @ (posedge clk or posedge reset) begin
 	case (state)
 	IDLE: begin
 		//signals for IDLE
-        busy    <= 1'b0;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
@@ -162,7 +162,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	SETUP_HIGH: begin
 		//signals for SETUP_HIGH
-        busy    <= 1'b1;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
@@ -170,14 +170,14 @@ always @ (posedge clk or posedge reset) begin
 	end
 	ACTIVE_HIGH: begin
 		//signals for SETUP_HIGH
-		LCD_E 	<= 1'b1;
+		LCD_E 	<= 1'b0;
 		LCD_RS 	<= db[9];
 		LCD_RW 	<= db[8];
 		SF_D 	<= db[7:4];
 	end
 	HOLD_HIGH: begin
 		//signals for HOLD_HIGH
-        busy    <= 1'b1;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
@@ -185,7 +185,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	WAIT: begin
 		//signals for WAIT
-        busy    <= 1'b1;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
@@ -193,7 +193,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	SETUP_LOW: begin
 		//signals for SETUP_LOW
-        busy    <= 1'b1;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
@@ -201,7 +201,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	ACTIVE_LOW: begin
 		//signals for SETUP_HIGH
-        busy    <= 1'b1;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b1;
 		LCD_RS 	<= db[9];
 		LCD_RW 	<= db[8];
@@ -209,7 +209,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	HOLD_LOW: begin
 		//signals for HOLD_LOW
-        busy    <= 1'b1;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
@@ -217,7 +217,12 @@ always @ (posedge clk or posedge reset) begin
 	end
 	DONE: begin
 		//signals for DONE
-        busy    <= 1'b1;
+        if (clk_cnt == 12'd2080) begin
+            done    <= 1'b1;;
+	  	end
+        else begin
+            done <= 1'b0;
+        end
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
@@ -225,7 +230,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	default: begin
 		//signals for default => IDLE
-        busy    <= 1'b0;
+        done    <= 1'b0;
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
