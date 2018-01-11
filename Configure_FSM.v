@@ -241,13 +241,14 @@ always @ (posedge clk or posedge reset) begin
             db <= 10'b00_0000_0000;
         end
         FUNCTION_SET: begin
-            db <= 10'b00_0010_10XX;
+            db <= 10'b00_0010_1000;
         end
         ENTRY_MODE_SET: begin
             db <= 10'b00_0000_0111;
         end
         DISPLAY_ON_OFF: begin
-            db <= 10'b00_0000_1DCB;
+            //db <= 10'b00_0000_0DCB    //D:display on/off, C: cursor, B: blinking 
+            db <= 10'b00_0000_1111;
         end
         CLEAR_DISPLAY: begin
             db <= 10'b00_0000_0001;

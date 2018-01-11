@@ -1,13 +1,12 @@
-module Init_FSM (clk, reset, clk_cnt, enable, SF_D, LCD_E, db);
+module Init_FSM (clk, reset, clk_cnt, enable, SF_D, LCD_E);
 
 input wire clk, reset;
 input wire [19:0]clk_cnt;
 output reg enable, LCD_E;
-output reg [7:0]db;
+output reg [11:0]SF_D;
 
 reg [3:0]next_state;
 wire [3:0]state;
-
 
 parameter OFF    = 4'd0;
 parameter STATE1 = 4'd1;
@@ -20,7 +19,6 @@ parameter STATE7 = 4'd7;
 parameter STATE8 = 4'd8;
 parameter STATE9 = 4'd9;
 parameter DONE   = 4'd10;
-
 
 assign state = next_state;
 
@@ -109,6 +107,9 @@ begin
         DONE: begin
             next_state <= DONE;
         end
+        default: begin
+            next_state <= STATE1;
+        end
         endcase
     end
 end
@@ -119,64 +120,69 @@ begin
     if (reset == 1) begin
         enable <= 1'b0;
         LCD_E <= 1'b0;
-        SF_D <= 4'bxxxx;
+        SF_D[11:8] <= 4'b0000;
     end
     else begin
         case (state)
         OFF: begin
             enable <= 1'b0;
             LCD_E <= 1'b0;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0000;
         end
         STATE1: begin
             enable <= 1'b0;
             LCD_E <= 1'b0;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0000;
         end
         STATE2: begin
             enable <= 1'b0;
             LCD_E <= 1'b1;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0011;
         end
         STATE3: begin
             enable <= 1'b0;
             LCD_E <= 1'b0;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0000;
         end
         STATE4: begin
             enable <= 1'b0;
             LCD_E <= 1'b1;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0011;
         end
         STATE5: begin
             enable <= 1'b0;
             LCD_E <= 1'b0;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0000;
         end
         STATE6: begin
             enable <= 1'b0;
             LCD_E <= 1'b1;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0011;
         end
         STATE7: begin
             enable <= 1'b0;
             LCD_E <= 1'b0;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0000;
         end
         STATE8: begin
             enable <= 1'b0;
             LCD_E <= 1'b1;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0010;
         end
         STATE9: begin
             enable <= 1'b0;
             LCD_E <= 1'b0;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0000;
         end
         DONE: begin
             enable <= 1'b1;
             LCD_E <= 1'b0;
-            SF_D <= 4'bxxxx;
+            SF_D[11:8] <= 4'b0000;
+        end
+        default: begin
+            enable <= 1'b0;
+            LCD_E <= 1'b0;
+            SF_D[11:8] <= 4'b0000;
         end
         endcase
     end
