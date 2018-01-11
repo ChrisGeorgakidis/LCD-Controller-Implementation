@@ -15,9 +15,9 @@ LCD_controller LCD_controller (
 );
 
 initial begin
-    clk <= 0;
-    reset <= 1;
-    #500 reset <= 0;
+    clk = 0;
+    reset = 1;
+    #500 reset = 0;
 end
 
 always begin
