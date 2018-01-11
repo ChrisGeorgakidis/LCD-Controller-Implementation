@@ -146,8 +146,8 @@ always @ (posedge clk or posedge reset) begin
         enable  <= 1'b1;
 	end
 	ACTIVE_HIGH: begin
-		//signals for SETUP_HIGH
-		LCD_E 	<= 1'b0;
+		//signals for ACTIVE_HIGH
+		LCD_E 	<= 1'b1;
 		LCD_RS 	<= db[9];
 		LCD_RW 	<= db[8];
 		SF_D 	<= db[7:4];
