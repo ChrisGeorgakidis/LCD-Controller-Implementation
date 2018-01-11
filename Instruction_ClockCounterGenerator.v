@@ -1,4 +1,4 @@
-module ClockCounterGenerator(clk, reset, clk_cnt, enable);
+module Instruction_ClockCounterGenerator(clk, reset, clk_cnt, enable);
 input wire clk, reset, enable;
 output wire [11:0]clk_cnt;
 

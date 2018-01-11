@@ -1,4 +1,4 @@
-module Init_FSM (clk, reset, clk_cnt, enable, SF_D, LCD_E);
+module Initialize_FSM (clk, reset, clk_cnt, enable, SF_D, LCD_E);
 
 input wire clk, reset;
 input wire [19:0]clk_cnt;
@@ -22,7 +22,7 @@ parameter DONE   = 4'd10;
 
 assign state = next_state;
 
-always @ (posedge clk or reset)
+always @ (posedge clk or posedge reset)
 begin
     if (reset == 1) begin
         next_state <= OFF;
@@ -114,7 +114,7 @@ begin
     end
 end
 
-always @ (posedge clk or reset)
+always @ (posedge clk or posedge reset)
 begin
     if (reset == 1) begin
         enable <= 1'b0;

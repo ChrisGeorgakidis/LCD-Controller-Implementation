@@ -26,13 +26,12 @@ parameter WAIT_1SEC                     = 4'd10;
 //===============================================================================================
 wire [3:0]state;
 reg [3:0]next_state;
-reg [4:0]counter;
-reg [25:0]clk_cnt;
+reg [3:0]counter;
 reg cursor_flag;
 reg [7:0]line_1 [15:0];
 reg [7:0]line_2 [15:0];
 
-always begin
+always @ (posedge clk) begin
     line_1[0] <= 8'b0100_0011;      // 'C'
     line_1[1] <= 8'b0110_1000;      // 'h'
     line_1[2] <= 8'b0111_0010;      // 'r'
@@ -70,7 +69,7 @@ always begin
     else begin
         line_2[14] <= 8'b0010_0000; // ' '   No CURSOR
     end
-    line_1[15] <= 8'b0010_0000;     // ' '
+    line_2[15] <= 8'b0010_0000;     // ' '
 end
 
 assign state = next_state;
@@ -79,7 +78,6 @@ assign state = next_state;
 always @ (posedge clk or posedge reset) begin
     if (reset == 1'b1) begin
         next_state <= IDLE;
-        counter <= 4'b0;
         cursor_flag <= 1'b1;
     end
     else begin
@@ -241,7 +239,7 @@ always @ (posedge clk or posedge reset) begin
                 end
             end
             WAIT_1SEC: begin
-                if (cnt_1s == 26'd65000000) begin
+                if (cnt_1s == 26'd50000000) begin
                     next_state <= FUNCTION_SET;
                     cursor_flag <= ~cursor_flag;
                     next_instruction <= 1'b1;
@@ -316,6 +314,9 @@ always @ (posedge clk or posedge reset) begin
         end
         WAIT_1SEC: begin
             db <= 10'b00_0000_0000;
+        end
+        default: begin
+            db <= 10'b11_1111_1111;
         end
         endcase
     end

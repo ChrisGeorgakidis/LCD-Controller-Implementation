@@ -24,7 +24,7 @@ Instruction_FSM Instruction_FSM (
     .enable           (enable)
 );
 
-ClockCounterGenerator ClockCounterGenerator (
+Instruction_ClockCounterGenerator Instruction_ClockCounterGenerator (
     .clk        (clk),
     .reset      (reset),
     .clk_cnt    (clk_cnt),

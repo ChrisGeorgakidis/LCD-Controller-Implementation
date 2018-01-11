@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/Giannis/UTH/4o etos/Digital Electronics/Lab4/LCD_sim_files/LCD_controller/LCD_tb_isim_beh1.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="LCD_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/enable" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/line_1" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">line_1[15:0,7:0]</obj_property>
+      <obj_property name="ObjectShortName">line_1[15:0,7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/line_2" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">line_2[15:0,7:0]</obj_property>
+      <obj_property name="ObjectShortName">line_2[15:0,7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/enable_w1s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enable_w1s</obj_property>
+      <obj_property name="ObjectShortName">enable_w1s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/cnt_1s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cnt_1s[25:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_1s[25:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/enable_w1_64ms" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enable_w1_64ms</obj_property>
+      <obj_property name="ObjectShortName">enable_w1_64ms</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/cnt_1_64ms" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">cnt_1_64ms[16:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_1_64ms[16:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/next_instruction" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">next_instruction</obj_property>
+      <obj_property name="ObjectShortName">next_instruction</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/done" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[4:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/next_state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">next_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/cursor_flag" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">cursor_flag</obj_property>
+      <obj_property name="ObjectShortName">cursor_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/db" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">db[9:0]</obj_property>
+      <obj_property name="ObjectShortName">db[9:0]</obj_property>
+   </wvobject>
+</wave_config>

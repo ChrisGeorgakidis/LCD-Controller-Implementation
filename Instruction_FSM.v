@@ -1,12 +1,12 @@
-module Instruction_FSM (clk, reset, next_instruction, clk_cnt, db, LCD_RS, SF_D, LCD_RW, LCD_E, done);
+module Instruction_FSM (clk, reset, next_instruction, clk_cnt, db, LCD_RS, SF_D, LCD_RW, LCD_E, done, enable);
 input wire clk, reset;
 input wire next_instruction;
 input wire [11:0]clk_cnt;
 input wire [9:0]db;
 	//The [9:8]db refers to LCD_RS and LCD_RW foor each instruction & the [7:0]db refers to DBs
 output reg LCD_RS, LCD_RW, LCD_E;
-output reg [3:0]SF_D;
-output reg done;
+output reg [11:0]SF_D;
+output reg done, enable;
 
 //===============================================================================================
 //-------------------------------------Define the States-----------------------------------------
@@ -123,7 +123,7 @@ always @ (posedge clk or posedge reset) begin
 	LCD_E 	<= 1'b0;
 	LCD_RS 	<= 1'b0;
 	LCD_RW 	<= 1'b0;
-	SF_D 	<= 4'b0;
+	SF_D[11:8] 	<= 4'b0;
   end
   else begin
 	case (state)
@@ -133,7 +133,8 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= 4'b0;
+		SF_D[11:8] 	<= 4'b0;
+        enable  <= 1'b0;
 	end
 	SETUP_HIGH: begin
 		//signals for SETUP_HIGH
@@ -141,14 +142,16 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= db[7:4];
+		SF_D[11:8] 	<= db[7:4];
+        enable  <= 1'b1;
 	end
 	ACTIVE_HIGH: begin
-		//signals for SETUP_HIGH
-		LCD_E 	<= 1'b0;
+		//signals for ACTIVE_HIGH
+		LCD_E 	<= 1'b1;
 		LCD_RS 	<= db[9];
 		LCD_RW 	<= db[8];
-		SF_D 	<= db[7:4];
+		SF_D[11:8] 	<= db[7:4];
+        enable  <= 1'b1;
 	end
 	HOLD_HIGH: begin
 		//signals for HOLD_HIGH
@@ -156,7 +159,8 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= db[7:4];
+		SF_D[11:8] 	<= db[7:4];
+        enable  <= 1'b1;
 	end
 	WAIT: begin
 		//signals for WAIT
@@ -164,7 +168,8 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= db[7:4];
+		SF_D[11:8] 	<= db[7:4];
+        enable  <= 1'b1;
 	end
 	SETUP_LOW: begin
 		//signals for SETUP_LOW
@@ -172,7 +177,8 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= db[3:0];
+		SF_D[11:8]	<= db[3:0];
+        enable  <= 1'b1;
 	end
 	ACTIVE_LOW: begin
 		//signals for SETUP_HIGH
@@ -180,7 +186,8 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b1;
 		LCD_RS 	<= db[9];
 		LCD_RW 	<= db[8];
-		SF_D 	<= db[3:0];
+		SF_D[11:8] 	<= db[3:0];
+        enable  <= 1'b1;
 	end
 	HOLD_LOW: begin
 		//signals for HOLD_LOW
@@ -188,20 +195,23 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= db[3:0];
+		SF_D[11:8] 	<= db[3:0];
+        enable  <= 1'b1;
 	end
 	DONE: begin
 		//signals for DONE
         if (clk_cnt == 12'd2080) begin
             done    <= 1'b1;
+            enable  <= 1'b0;
 	  	end
         else begin
+            enable  <= 1'b1;
             done <= 1'b0;
         end
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= db[3:0];
+		SF_D[11:8] 	<= db[3:0];
 	end
 	default: begin
 		//signals for default => IDLE
@@ -209,7 +219,8 @@ always @ (posedge clk or posedge reset) begin
 		LCD_E 	<= 1'b0;
 		LCD_RS 	<= 1'b0;
 		LCD_RW 	<= 1'b0;
-		SF_D 	<= 4'b0;
+		SF_D[11:8] 	<= 4'b0;
+        enable  <= 1'b0;
 	end
 	endcase
   end

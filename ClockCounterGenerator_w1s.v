@@ -14,7 +14,7 @@ begin
 	else begin
 		if (enable == 1) begin
 	  		next_clk_cnt <= clk_cnt + 26'd1;
-			if (clk_cnt == 26'd65000000) begin
+			if (clk_cnt == 26'd50000000) begin
 		  		next_clk_cnt <= 26'd0;
 			end
 		end
