@@ -8,6 +8,7 @@ output wire [3:0]SF_D;
 output wire done;
 
 wire [11:0] clk_cnt;
+wire enable;
 
 Instruction_FSM Instruction_FSM (
     .clk              (clk),
@@ -19,13 +20,15 @@ Instruction_FSM Instruction_FSM (
     .SF_D             (SF_D),
     .LCD_RW           (LCD_RW),
     .LCD_E            (LCD_E),
-    .done             (done)
+    .done             (done),
+    .enable           (enable)
 );
 
 ClockCounterGenerator ClockCounterGenerator (
     .clk        (clk),
     .reset      (reset),
-    .clk_cnt    (clk_cnt)
+    .clk_cnt    (clk_cnt),
+    .enable     (enable)
 );
 
 endmodule

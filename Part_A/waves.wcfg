@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/Giannis/UTH/4o etos/Digital Electronics/Lab4/LCD_sim_files/LCD_A/Instruction_tb_isim_beh1.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="Instruction_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/reset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/clk_cnt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_cnt[11:0]</obj_property>
+      <obj_property name="ObjectShortName">clk_cnt[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/next_instruction" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">next_instruction</obj_property>
+      <obj_property name="ObjectShortName">next_instruction</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/next_state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">next_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">next_state[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/LCD_RS" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_RS</obj_property>
+      <obj_property name="ObjectShortName">LCD_RS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/LCD_RW" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_RW</obj_property>
+      <obj_property name="ObjectShortName">LCD_RW</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/LCD_E" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_E</obj_property>
+      <obj_property name="ObjectShortName">LCD_E</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/done" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/enable" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/db" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">db[9:0]</obj_property>
+      <obj_property name="ObjectShortName">db[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Instruction_tb/Instruction/Instruction_FSM/SF_D" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SF_D[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SF_D[3:0]</obj_property>
+   </wvobject>
+</wave_config>
