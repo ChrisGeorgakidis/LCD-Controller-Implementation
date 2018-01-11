@@ -114,7 +114,6 @@ begin
     end
 end
 
-
 always @ (posedge clk or reset)
 begin
     if (reset == 1) begin
@@ -187,6 +186,5 @@ begin
         endcase
     end
 end
-
 
 endmodule
