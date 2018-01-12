@@ -1,8 +1,8 @@
-module LCD_controller (clk, reset, LCD_E, SF_D, LCD_RS, LCD_RW);
+module LCD_controller (clk, reset, LCD_E, SF_D11, SF_D10, SF_D9, SF_D8, LCD_RS, LCD_RW);
 input wire clk, reset;
 output reg LCD_E;
 output wire LCD_RS, LCD_RW;
-output reg [11:0]SF_D;
+output reg SF_D11, SF_D10, SF_D9, SF_D8;
 
 wire [11:0]init_sfd;
 wire [11:0]instr_sfd;
@@ -16,15 +16,32 @@ wire [9:0]db;
 
 ///////////////////////////////////////////////////
 ///////////////////////////////////////////////////
-
-always @ (*) begin
-    if (enable == 1'b1) begin
-      SF_D <= instr_sfd;
-      LCD_E <= instr_lcd_e;
+//assign SF_D = enable ? instr_sfd : init_sfd;
+//assign LCD_E = enable ? instr_lcd_e : init_lcd_e;
+/*SF_D <= {nit_sfd[11:8], 8'b00000000}*/
+always @ (posedge clk or posedge reset) begin
+    if(reset) begin
+        SF_D11  <= 1'b0;
+        SF_D10  <= 1'b0;
+        SF_D9   <= 1'b0;
+        SF_D8   <= 1'b0;
+        LCD_E   <= 1'b1;
     end
     else begin
-      SF_D <= init_sfd;
-      LCD_E <= init_lcd_e;
+        if (enable == 1'b1) begin
+            SF_D11  <= instr_sfd[11];
+            SF_D10  <= instr_sfd[10];
+            SF_D9   <= instr_sfd[9];
+            SF_D8   <= instr_sfd[8];
+            LCD_E <= instr_lcd_e;
+        end
+        else begin
+            SF_D11  <= init_sfd[11];
+            SF_D10  <= init_sfd[10];
+            SF_D9   <= init_sfd[9];
+            SF_D8   <= init_sfd[8];
+            LCD_E <= init_lcd_e;
+        end
     end
 end
 

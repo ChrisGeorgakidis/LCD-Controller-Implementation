@@ -119,7 +119,7 @@ begin
     if (reset == 1) begin
         enable <= 1'b0;
         LCD_E <= 1'b0;
-        SF_D[11:8] <= 4'b0000;
+        SF_D[11:0] <= 12'd0;
     end
     else begin
         case (state)

@@ -63,12 +63,12 @@ always @ (posedge clk) begin
     line_2[11] <= 8'b0010_0001;     // '!'
     line_2[12] <= 8'b0010_0001;     // '!'
     line_2[13] <= 8'b0010_0001;     // '!'
-    if (cursor_flag == 1) begin
-        line_2[14] <= 8'b1111_1111; // CURSOR
-    end
-    else begin
+    //if (cursor_flag == 1) begin
+        line_2[14] <= 8'b0010_0011; // CURSOR
+    //end
+    /*else begin
         line_2[14] <= 8'b0010_0000; // ' '   No CURSOR
-    end
+    end*/
     line_2[15] <= 8'b0010_0000;     // ' '
 end
 
@@ -189,7 +189,7 @@ always @ (posedge clk or posedge reset) begin
                 end
                 else begin
                     if (done == 1'b1) begin
-                        next_state <= SET_DDRAM_ADDRESS_1;
+                        next_state <= WRITE_DATA_TO_DDRAM_1;
                         next_instruction <= 1'b1;
                         enable_w1s <= 1'b0;
                         enable_w1_64ms <= 1'b0;
@@ -219,13 +219,13 @@ always @ (posedge clk or posedge reset) begin
             WRITE_DATA_TO_DDRAM_2: begin
                 if (counter == 4'd15 && done == 1'b1) begin
                     next_state <= WAIT_1SEC;
-                    next_instruction <= 1'b1;
+                    next_instruction <= 1'b0;
                     enable_w1s <= 1'b1;
                     enable_w1_64ms <= 1'b0;
                 end
                 else begin
                     if (done == 1'b1) begin
-                        next_state <= SET_DDRAM_ADDRESS_2;
+                        next_state <= WRITE_DATA_TO_DDRAM_2;
                         next_instruction <= 1'b1;
                         enable_w1s <= 1'b0;
                         enable_w1_64ms <= 1'b0;
@@ -278,7 +278,7 @@ always @ (posedge clk or posedge reset) begin
             db <= 10'b00_0010_1000;
         end
         ENTRY_MODE_SET: begin
-            db <= 10'b00_0000_0111;
+            db <= 10'b00_0000_0110;
         end
         DISPLAY_ON_OFF: begin
             //db <= 10'b00_0000_1DCB    //D:display on/off, C: cursor, B: blinking
@@ -291,9 +291,9 @@ always @ (posedge clk or posedge reset) begin
             db <= 10'b00_0000_0000;
         end
         SET_DDRAM_ADDRESS_1: begin
-            if (counter == 4'b0000) begin
+        //    if (counter == 4'b0000) begin
                 db <= 10'b00_1000_0000;
-            end
+        //    end
         end
         WRITE_DATA_TO_DDRAM_1: begin
             db <= {2'b10, line_1[counter]};
@@ -302,9 +302,9 @@ always @ (posedge clk or posedge reset) begin
             end
         end
         SET_DDRAM_ADDRESS_2: begin
-            if (counter == 4'b0000) begin
-                db <= 10'b00_1010_1000;
-            end
+        //    if (counter == 4'b0000) begin
+                db <= 10'b00_1110_0000;
+        //    end
         end
         WRITE_DATA_TO_DDRAM_2: begin
             db <= {2'b10, line_2[counter]};

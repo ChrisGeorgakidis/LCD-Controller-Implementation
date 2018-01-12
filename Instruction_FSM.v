@@ -140,7 +140,7 @@ always @ (posedge clk or posedge reset) begin
 		//signals for SETUP_HIGH
         done    <= 1'b0;
 		LCD_E 	<= 1'b0;
-		LCD_RS 	<= 1'b0;
+		LCD_RS 	<= db[9];
 		LCD_RW 	<= 1'b0;
 		SF_D[11:8] 	<= db[7:4];
         enable  <= 1'b1;
@@ -157,7 +157,7 @@ always @ (posedge clk or posedge reset) begin
 		//signals for HOLD_HIGH
         done    <= 1'b0;
 		LCD_E 	<= 1'b0;
-		LCD_RS 	<= 1'b0;
+		LCD_RS 	<= db[9];
 		LCD_RW 	<= 1'b0;
 		SF_D[11:8] 	<= db[7:4];
         enable  <= 1'b1;
@@ -175,7 +175,7 @@ always @ (posedge clk or posedge reset) begin
 		//signals for SETUP_LOW
         done    <= 1'b0;
 		LCD_E 	<= 1'b0;
-		LCD_RS 	<= 1'b0;
+		LCD_RS 	<= db[9];
 		LCD_RW 	<= 1'b0;
 		SF_D[11:8]	<= db[3:0];
         enable  <= 1'b1;
@@ -193,7 +193,7 @@ always @ (posedge clk or posedge reset) begin
 		//signals for HOLD_LOW
         done    <= 1'b0;
 		LCD_E 	<= 1'b0;
-		LCD_RS 	<= 1'b0;
+		LCD_RS 	<= db[9];
 		LCD_RW 	<= 1'b0;
 		SF_D[11:8] 	<= db[3:0];
         enable  <= 1'b1;

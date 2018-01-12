@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="16" />
+   <WVObjectSize size="37" />
    <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/clk" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -19,9 +19,106 @@
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
    </wvobject>
+   <wvobject fp_name="divider27" type="divider">
+      <obj_property name="label">Init</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Initialize_FSM/clk_cnt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_cnt[19:0]</obj_property>
+      <obj_property name="ObjectShortName">clk_cnt[19:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Initialize_FSM/state" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Initialize_FSM/SF_D" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">SF_D[11:0]</obj_property>
+      <obj_property name="ObjectShortName">SF_D[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Initialize_FSM/LCD_E" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_E</obj_property>
+      <obj_property name="ObjectShortName">LCD_E</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/init_sfd" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">init_sfd[11:0]</obj_property>
+      <obj_property name="ObjectShortName">init_sfd[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/init_lcd_e" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">init_lcd_e</obj_property>
+      <obj_property name="ObjectShortName">init_lcd_e</obj_property>
+   </wvobject>
    <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/enable" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">enable</obj_property>
       <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider28" type="divider">
+      <obj_property name="label">Instruction</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/next_instruction" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">next_instruction</obj_property>
+      <obj_property name="ObjectShortName">next_instruction</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Instruction_FSM/enable" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Instruction_FSM/clk_cnt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_cnt[11:0]</obj_property>
+      <obj_property name="ObjectShortName">clk_cnt[11:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Instruction_FSM/LCD_E" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_E</obj_property>
+      <obj_property name="ObjectShortName">LCD_E</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/Instruction_FSM/LCD_RS" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_RS</obj_property>
+      <obj_property name="ObjectShortName">LCD_RS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/instr_sfd" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">instr_sfd[11:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_sfd[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/instr_lcd_e" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">instr_lcd_e</obj_property>
+      <obj_property name="ObjectShortName">instr_lcd_e</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider29" type="divider">
+      <obj_property name="label">Configure</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_RS" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_RS</obj_property>
+      <obj_property name="ObjectShortName">LCD_RS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_E" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">LCD_E</obj_property>
+      <obj_property name="ObjectShortName">LCD_E</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/SF_D11" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SF_D11</obj_property>
+      <obj_property name="ObjectShortName">SF_D11</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/SF_D10" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SF_D10</obj_property>
+      <obj_property name="ObjectShortName">SF_D10</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/SF_D9" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SF_D9</obj_property>
+      <obj_property name="ObjectShortName">SF_D9</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LCD_tb/LCD_controller/SF_D8" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">SF_D8</obj_property>
+      <obj_property name="ObjectShortName">SF_D8</obj_property>
    </wvobject>
    <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/line_1" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">line_1[15:0,7:0]</obj_property>
@@ -51,17 +148,13 @@
       <obj_property name="ObjectShortName">cnt_1_64ms[16:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/next_instruction" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">next_instruction</obj_property>
-      <obj_property name="ObjectShortName">next_instruction</obj_property>
-   </wvobject>
    <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/done" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">done</obj_property>
       <obj_property name="ObjectShortName">done</obj_property>
    </wvobject>
    <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/counter" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">counter[4:0]</obj_property>
-      <obj_property name="ObjectShortName">counter[4:0]</obj_property>
+      <obj_property name="ElementShortName">counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/LCD_tb/LCD_controller/Configure_FSM/state" type="array" db_ref_id="1">
