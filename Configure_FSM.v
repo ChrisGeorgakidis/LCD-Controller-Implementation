@@ -291,9 +291,7 @@ always @ (posedge clk or posedge reset) begin
             db <= 10'b00_0000_0000;
         end
         SET_DDRAM_ADDRESS_1: begin
-        //    if (counter == 4'b0000) begin
-                db <= 10'b00_1000_0000;
-        //    end
+            db <= 10'b00_1000_0000;
         end
         WRITE_DATA_TO_DDRAM_1: begin
             db <= {2'b10, line_1[counter]};
@@ -302,9 +300,7 @@ always @ (posedge clk or posedge reset) begin
             end
         end
         SET_DDRAM_ADDRESS_2: begin
-        //    if (counter == 4'b0000) begin
-                db <= 10'b00_1110_0000;
-        //    end
+            db <= 10'b00_1100_0000;
         end
         WRITE_DATA_TO_DDRAM_2: begin
             db <= {2'b10, line_2[counter]};
