@@ -102,7 +102,7 @@ always @ (posedge clk or posedge reset) begin
 	  	end
 	end
 	DONE: begin
-		if (clk_cnt == 12'd2180) begin
+		if (clk_cnt == 12'd2080) begin
 			next_state <= IDLE;
 	  	end
 	  	else begin
@@ -200,7 +200,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	DONE: begin
 		//signals for DONE
-        if (clk_cnt == 12'd2180) begin
+        if (clk_cnt == 12'd2080) begin
             done    <= 1'b1;
             enable  <= 1'b0;
 	  	end
