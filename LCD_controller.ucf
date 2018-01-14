@@ -11,6 +11,6 @@ NET "SF_D11" LOC = M15;
 NET "clk" LOC = C9;
 NET "clk" PERIOD = 20 ns HIGH 50 %;
 
-NET "reset" LOC = K17;
+NET "reset" LOC = D18;
 
 # PlanAhead Generated physical constraints
