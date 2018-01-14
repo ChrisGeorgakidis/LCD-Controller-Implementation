@@ -63,12 +63,12 @@ always @ (posedge clk) begin
     line_2[11] <= 8'b0010_0001;     // '!'
     line_2[12] <= 8'b0010_0001;     // '!'
     line_2[13] <= 8'b0010_0001;     // '!'
-    //if (cursor_flag == 1) begin
+    if (cursor_flag == 1) begin
         line_2[14] <= 8'b0010_0011; // CURSOR
-    //end
-    /*else begin
+    end
+    else begin
         line_2[14] <= 8'b0010_0000; // ' '   No CURSOR
-    end*/
+    end
     line_2[15] <= 8'b0010_0000;     // ' '
 end
 
@@ -282,7 +282,7 @@ always @ (posedge clk or posedge reset) begin
         end
         DISPLAY_ON_OFF: begin
             //db <= 10'b00_0000_1DCB    //D:display on/off, C: cursor, B: blinking
-            db <= 10'b00_0000_1111;
+            db <= 10'b00_0000_1100;
         end
         CLEAR_DISPLAY: begin
             db <= 10'b00_0000_0001;
