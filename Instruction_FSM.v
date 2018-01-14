@@ -54,7 +54,7 @@ always @ (posedge clk or posedge reset) begin
 		end
 	end
 	ACTIVE_HIGH: begin
-		if (clk_cnt == 12'd114) begin
+		if (clk_cnt == 12'd14) begin
 			next_state <= HOLD_HIGH;
 		end
 		else begin
@@ -62,7 +62,7 @@ always @ (posedge clk or posedge reset) begin
 		end
 	end
 	HOLD_HIGH: begin
-		if (clk_cnt == 12'd115) begin
+		if (clk_cnt == 12'd15) begin
 			next_state <= WAIT;
 	  	end
 	  	else begin
@@ -70,7 +70,7 @@ always @ (posedge clk or posedge reset) begin
 	  	end
 	end
 	WAIT: begin
-		if (clk_cnt == 12'd165) begin
+		if (clk_cnt == 12'd65) begin
 			next_state <= SETUP_LOW;
 	  	end
 	  	else begin
@@ -78,7 +78,7 @@ always @ (posedge clk or posedge reset) begin
 	  	end
 	end
 	SETUP_LOW: begin
-		if (clk_cnt == 12'd167) begin
+		if (clk_cnt == 12'd67) begin
 			next_state <= ACTIVE_LOW;
 	  	end
 	  	else begin
@@ -86,7 +86,7 @@ always @ (posedge clk or posedge reset) begin
 	  	end
 	end
 	ACTIVE_LOW: begin
-		if (clk_cnt == 12'd279) begin
+		if (clk_cnt == 12'd79) begin
 			next_state <= HOLD_LOW;
 	  	end
 	  	else begin
@@ -94,7 +94,7 @@ always @ (posedge clk or posedge reset) begin
 	  	end
 	end
 	HOLD_LOW: begin
-		if (clk_cnt == 12'd280) begin
+		if (clk_cnt == 12'd80) begin
 			next_state <= DONE;
 	  	end
 	  	else begin
@@ -102,7 +102,7 @@ always @ (posedge clk or posedge reset) begin
 	  	end
 	end
 	DONE: begin
-		if (clk_cnt == 12'd2280) begin
+		if (clk_cnt == 12'd2180) begin
 			next_state <= IDLE;
 	  	end
 	  	else begin
@@ -200,7 +200,7 @@ always @ (posedge clk or posedge reset) begin
 	end
 	DONE: begin
 		//signals for DONE
-        if (clk_cnt == 12'd2080) begin
+        if (clk_cnt == 12'd2180) begin
             done    <= 1'b1;
             enable  <= 1'b0;
 	  	end
